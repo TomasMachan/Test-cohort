@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  generateName: github-add-comment-tm-run-
+spec:
+  taskRef:
+    kind: Task
+    name: github-add-comment
+  params:
+    - name: REQUEST_URL
+      value: https://github.com/TomasMachan/Test-cohort/issues/7
+    - name: COMMENT_OR_FILE
+      value: |
+        Test from TaskRun
