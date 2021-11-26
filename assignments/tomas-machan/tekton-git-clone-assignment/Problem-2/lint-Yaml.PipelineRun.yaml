@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: yaml-pipeline-run-
+spec:
+  params:
+    - name: source-repo
+      value: https://github.com/cloud-native-garage-method-cohort/emea-8-yaml-tomas-machan.git
+  pipelineRef:
+    name: linter-pipeline
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 1Gi
+          accessModes:
+            - ReadWriteOnce
