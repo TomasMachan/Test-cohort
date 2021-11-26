@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: get-non-root-steps
+spec:
+  steps:
+    - name: retrieve-yaml
+      image: quay.io/ibmgaragecloud/alpine-curl:latest
+      script: |
+        mkdir k8s
+        cd k8s
+        wget https://raw.githubusercontent.com/tektoncd/pipeline/main/examples/v1beta1/taskruns/run-steps-as-non-root.yaml
+    - name: extract-task
+      image: quay.io/ibmgaragecloud/alpine-curl:latest
+      script: |
+        cd k8s
+        cat run-steps-as-non-root.yaml | head -n 24 > run-steps-as-non-root.Task.yaml
+    - name: swap-image
+      image: quay.io/ibmgaragecloud/alpine-curl:latest
+      script: |
+        cd k8s
+        sed "s/ubuntu/quay.io\/ibmgaragecloud\/alpine-curl/g" run-steps-as-non-root.Task.yaml > run-steps-as-non-root-alpine.Task.yaml
