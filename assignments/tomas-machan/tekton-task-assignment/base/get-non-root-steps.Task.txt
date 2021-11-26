@@ -1,0 +1,12 @@
+[retrieve-yaml] + mkdir k8s
+[retrieve-yaml] + cd k8s
+[retrieve-yaml] + wget https://raw.githubusercontent.com/tektoncd/pipeline/main/examples/v1beta1/taskruns/run-steps-as-non-root.yaml
+[retrieve-yaml] Connecting to raw.githubusercontent.com (185.199.109.133:443)
+[retrieve-yaml] run-steps-as-non-roo 100% |********************************|   751  0:00:00 ETA
+
+[extract-task] + cd k8s
+[extract-task] + cat run-steps-as-non-root.yaml
+[extract-task] + head -n 24
+
+[swap-image] + cd k8s
+[swap-image] + sed 's/ubuntu/quay.io\/ibmgaragecloud\/alpine-curl/g' run-steps-as-non-root.Task.yaml
