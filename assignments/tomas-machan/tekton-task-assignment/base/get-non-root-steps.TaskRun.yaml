@@ -1,0 +1,7 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  generateName: get-non-root-steps-run-
+spec:
+  taskRef:
+    name: get-non-root-steps
