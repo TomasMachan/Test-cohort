@@ -1,0 +1,32 @@
+[fetch-repository : clone] + CHECKOUT_DIR=/workspace/output/
+[fetch-repository : clone] + [[ true == \t\r\u\e ]]
+[fetch-repository : clone] + cleandir
+[fetch-repository : clone] + [[ -d /workspace/output/ ]]
+[fetch-repository : clone] + rm -rf '/workspace/output//*'
+[fetch-repository : clone] + rm -rf '/workspace/output//.[!.]*'
+[fetch-repository : clone] + rm -rf '/workspace/output//..?*'
+[fetch-repository : clone] + test -z ''
+[fetch-repository : clone] + test -z ''
+[fetch-repository : clone] + test -z ''
+[fetch-repository : clone] + /ko-app/git-init -url https://github.com/cloud-native-garage-method-cohort/emea-8-yaml-tomas-machan.git -revision '' -refspec '' -path /workspace/output/ -sslVerify=true -submodules=true -depth 1
+[fetch-repository : clone] {"level":"info","ts":1636712228.5796137,"caller":"git/git.go:157","msg":"Successfully cloned https://github.com/cloud-native-garage-method-cohort/emea-8-yaml-tomas-machan.git @ 7d57a2e7e368293c4f9bcce78c62d007d8727bc7 (grafted, HEAD) in path /workspace/output/"}
+[fetch-repository : clone] {"level":"info","ts":1636712228.8414788,"caller":"git/git.go:198","msg":"Successfully initialized and updated submodules in path /workspace/output/"}
+[fetch-repository : clone] + cd /workspace/output/
+[fetch-repository : clone] ++ git rev-parse HEAD
+[fetch-repository : clone] + RESULT_SHA=7d57a2e7e368293c4f9bcce78c62d007d8727bc7
+[fetch-repository : clone] + EXIT_CODE=0
+[fetch-repository : clone] + '[' 0 '!=' 0 ']'
+[fetch-repository : clone] + echo -n 7d57a2e7e368293c4f9bcce78c62d007d8727bc7
+[fetch-repository : clone] + echo -n https://github.com/cloud-native-garage-method-cohort/emea-8-yaml-tomas-machan.git
+
+[md-lint-run : lint-yaml-files] ./correct.yaml
+[md-lint-run : lint-yaml-files]   1:1       warning  missing document start "---"  (document-start)
+[md-lint-run : lint-yaml-files]   23:25     warning  too few spaces before comment  (comments)
+[md-lint-run : lint-yaml-files]   23:26     warning  missing starting space in comment  (comments)
+[md-lint-run : lint-yaml-files] 
+[md-lint-run : lint-yaml-files] ./incorrect.yaml
+[md-lint-run : lint-yaml-files]   1:1       warning  missing document start "---"  (document-start)
+[md-lint-run : lint-yaml-files]   1:3       error    wrong indentation: expected 0 but found 2  (indentation)
+[md-lint-run : lint-yaml-files]   2:1       error    syntax error: expected '<document start>', but found '<block mapping start>' (syntax)
+[md-lint-run : lint-yaml-files] 
+
